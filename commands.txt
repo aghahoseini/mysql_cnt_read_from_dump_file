@@ -1,0 +1,63 @@
+git clone 
+
+cd in cloned project
+
+cd  cn1
+
+docker compose up -d 
+
+
+
+
+mysql -u root -p123 -P 3307 -h 127.0.0.1 -e 'show databases;'
+
+
+mysql -u root -p123 -P 3307 -h 127.0.0.1 -e 'use movies; show tables'
+mysql -u root -p123 -P 3307 -h 127.0.0.1 -e 'use animations; show tables'
+
+mysql -u root -p123 -P 3307 -h 127.0.0.1 -e 'select * from movies.FightClub'
+mysql -u root -p123 -P 3307 -h 127.0.0.1 -e 'select * from movies.TheMist'
+
+mysql -u root -p123 -P 3307 -h 127.0.0.1 -e 'select * from animations.AOT'
+mysql -u root -p123 -P 3307 -h 127.0.0.1 -e 'select * from animations.RickandMorty'
+
+
+
+mysqldump -u root -p123 -P 3307 -h 127.0.0.1  --databases movies animations > ../backups/databases.sql
+mysqldump -u root -p123 -P 3307 -h 127.0.0.1  --databases movies animations | gzip -c > ../backups/databases.sql.gz
+
+refresh explorer in vscode
+
+
+
+
+
+
+cp -r ../backups/.  ../cn2/mysql_scripts/
+
+refresh explorer in vscode
+
+
+cd ../cn2
+
+
+docker compose up -d 
+
+
+
+
+mysql -u root -p123 -P 3308 -h 127.0.0.1 -e 'show databases;'
+
+mysql -u root -p123 -P 3308 -h 127.0.0.1 -e 'use movies; show tables'
+mysql -u root -p123 -P 3308 -h 127.0.0.1 -e 'use animations; show tables'
+
+mysql -u root -p123 -P 3308 -h 127.0.0.1 -e 'select * from movies.FightClub'
+mysql -u root -p123 -P 3308 -h 127.0.0.1 -e 'select * from movies.TheMist'
+
+mysql -u root -p123 -P 3308 -h 127.0.0.1 -e 'select * from animations.AOT'
+mysql -u root -p123 -P 3308 -h 127.0.0.1 -e 'select * from animations.RickandMorty'
+
+
+
+
+
